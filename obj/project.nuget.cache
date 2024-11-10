@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "VY2wh4vAvnGJt8DZiLvvE98QmPAcUyTY1IiRA4iSJDL1wNJMxGrVj1o4RZmWfRGUCdtsJN2v1NKLYtvb8MwC/Q==",
+  "success": true,
+  "projectFilePath": "D:\\SpectreConsoleAppProject\\SpectreConsoleAppProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\xmont\\.nuget\\packages\\spectre.console\\0.49.1\\spectre.console.0.49.1.nupkg.sha512"
+  ],
+  "logs": []
+}

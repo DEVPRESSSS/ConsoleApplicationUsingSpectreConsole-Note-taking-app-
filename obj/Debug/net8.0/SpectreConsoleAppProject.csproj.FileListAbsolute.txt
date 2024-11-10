@@ -1,0 +1,17 @@
+D:\SpectreConsoleAppProject\bin\Debug\net8.0\SpectreConsoleAppProject.exe
+D:\SpectreConsoleAppProject\bin\Debug\net8.0\SpectreConsoleAppProject.deps.json
+D:\SpectreConsoleAppProject\bin\Debug\net8.0\SpectreConsoleAppProject.runtimeconfig.json
+D:\SpectreConsoleAppProject\bin\Debug\net8.0\SpectreConsoleAppProject.dll
+D:\SpectreConsoleAppProject\bin\Debug\net8.0\SpectreConsoleAppProject.pdb
+D:\SpectreConsoleAppProject\bin\Debug\net8.0\Spectre.Console.dll
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.csproj.AssemblyReference.cache
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.GeneratedMSBuildEditorConfig.editorconfig
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.AssemblyInfoInputs.cache
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.AssemblyInfo.cs
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.csproj.CoreCompileInputs.cache
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreC.E3F5D334.Up2Date
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.dll
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\refint\SpectreConsoleAppProject.dll
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.pdb
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.genruntimeconfig.cache
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\ref\SpectreConsoleAppProject.dll
