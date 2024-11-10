@@ -15,3 +15,4 @@ D:\SpectreConsoleAppProject\obj\Debug\net8.0\refint\SpectreConsoleAppProject.dll
 D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.pdb
 D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.genruntimeconfig.cache
 D:\SpectreConsoleAppProject\obj\Debug\net8.0\ref\SpectreConsoleAppProject.dll
+D:\SpectreConsoleAppProject\obj\Debug\net8.0\SpectreConsoleAppProject.sourcelink.json
