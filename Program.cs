@@ -23,7 +23,7 @@ namespace SpectreConsoleAppProject
 
             //Welcome Message 
             AnsiConsole.Write(
-                    new FigletText("Devpress_101 Note Taking App \n \n")
+                    new FigletText("Welcome Todo App \n \n")
                         .Centered()
                         .Color(Color.Yellow));
 
@@ -55,7 +55,7 @@ namespace SpectreConsoleAppProject
             string add = Emoji.Known.Plus.ToString();
             string magnify = Emoji.Known.MagnifyingGlassTiltedLeft.ToString();
             string close = Emoji.Known.ClosedBook.ToString();
-            string update= Emoji.Known.Pencil.ToString();
+            string update= Emoji.Known.Pen.ToString();
             string delete= Emoji.Known.Wastebasket.ToString();
             while (true)
             {
@@ -63,7 +63,7 @@ namespace SpectreConsoleAppProject
                 var addTask = AnsiConsole.Prompt(
                   new SelectionPrompt<string>()
                      .Title("[yellow]Hi jerald, What would you like to do?[/]")
-                     .AddChoices($"{add}Add Task", $"{magnify}View Tasks", $"{update}Update Tasks", $"{delete} Delete Tasks", $"{close}Exit"));
+                     .AddChoices($"{add}Add Task", $"{magnify}View Tasks", $"{update} Update Tasks", $"{delete} Delete Tasks", $"{close}Exit"));
 
 
                 if (addTask == $"{add}Add Task")
@@ -138,7 +138,7 @@ namespace SpectreConsoleAppProject
                           AnsiConsole.MarkupLine("[bold red]Closing the application...[/]");
 
                         AnsiConsole.Write(
-                        new FigletText("Thank you for using my Todo App \n \n")
+                        new FigletText("Thank you for using my Todo App \n \n Develop by Devpress_101")
                             .Centered()
                             .Color(Color.Yellow));
 
