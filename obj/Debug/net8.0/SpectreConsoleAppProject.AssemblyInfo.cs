@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpectreConsoleAppProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f30e1de1563c04e400adbc8fe4d271e2ae0da881")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ef6c2240c8e8a617c383333a9b66d112345b5e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpectreConsoleAppProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpectreConsoleAppProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

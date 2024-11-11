@@ -1,16 +1,17 @@
 ﻿using Spectre.Console;
+using System.Data.SqlClient;
 using System.Net.Http.Headers;
 
 namespace SpectreConsoleAppProject
 {
     internal class Program
     {
+        public static List<string> tasks = new List<string>();
+
         static void Main(string[] args)
         {
-
-
-
             Body();
+
         }
 
         private static void Body()
@@ -28,82 +29,193 @@ namespace SpectreConsoleAppProject
 
             Console.WriteLine();
 
-
-            //Prompt the user
-            var addTask = AnsiConsole.Prompt(
-            new SelectionPrompt<string>()
-               .Title("[green]Hi jerald, What would you like to do?[/]")
-               .AddChoices("Add Task", "View Tasks", "Exit"));
-
-            if (addTask == "Add Task")
-            {
-                // Simulate the Add Task action
-                Addtask();
-            }
-            else if (addTask == "View Tasks")
-            {
-                // Simulate View Tasks action
-                AnsiConsole.MarkupLine("[bold yellow]Here are your tasks...[/]");
-            }
-            else if (addTask == "Exit ")
-            {
-                AnsiConsole.MarkupLine("[bold red]Exiting...[/]");
-            }
+            Prompt();
 
 
-            // Declare and emoji assign in hello variable
-            var hello = Emoji.Known.FountainPen;
 
 
-            // Create a rule with the emoji interploated
-            var rule = new Rule($"[yellow] Your task today{hello}[/]");
 
 
-            //Print the rule in the console
-            AnsiConsole.Write(rule);
 
-
-            // Render the layout of the list using Table in SpectreConsole
-
-            var check_emojie = Emoji.Known.CheckMarkButton;
-            var notes_table = new Table();
-
-
-            //Styles in table
-            notes_table.Border(TableBorder.Rounded);
-
-
-            notes_table.AddColumn("TaskID");
-            notes_table.AddColumn("Task");
-            notes_table.AddColumn(new TableColumn("Status").Centered());
-
-
-            notes_table.AddRow($"Task01", "Forgot pasword", "Done" + check_emojie);
-            notes_table.AddRow($"Task02", "Bug in change pass", "Done" + check_emojie);
-            notes_table.AddRow($"Task03", "Bug in login", "Done" + check_emojie);
-            notes_table.AddRow($"Tasl04", "Bug in dashboard", "Done" + check_emojie);
-
-            //notes_table.AddRow(new Markup("");
-
-            notes_table.Width(1000);
-            notes_table.Expand();
-            AnsiConsole.Write(notes_table);
         }
 
+        public enum Emojies{
+
+            Add = 1, 
+            View= 2,
+            Update= 3,
+            Close =4
+
+
+        }
+        private static void Prompt()
+        {
+
+
+            string add = Emoji.Known.Plus.ToString();
+            string magnify = Emoji.Known.MagnifyingGlassTiltedLeft.ToString();
+            string close = Emoji.Known.ClosedBook.ToString();
+            string update= Emoji.Known.Pencil.ToString();
+            string delete= Emoji.Known.Wastebasket.ToString();
+            while (true)
+            {
+
+                var addTask = AnsiConsole.Prompt(
+                  new SelectionPrompt<string>()
+                     .Title("[yellow]Hi jerald, What would you like to do?[/]")
+                     .AddChoices($"{add}Add Task", $"{magnify}View Tasks", $"{update}Update Tasks", $"{delete} Delete Tasks", $"{close}Exit"));
+
+
+                if (addTask == $"{add}Add Task")
+                {
+                    // Simulate the Add Task action
+                    //  AnsiConsole.Clear();
+                    Addtask();
+
+
+
+                }
+                else if (addTask == $"{magnify}View Tasks")
+                {
+                    // Simulate View Tasks action
+
+                    AnsiConsole.Clear();
+                    CRUD.ViewAllTask();
+                }
+
+                else if (addTask == $"{update} Update Tasks")
+                {
+                    // Simulate View Tasks action
+
+                   AnsiConsole.Clear();
+                   CRUD.ViewAllTask();
+
+
+                  // Thread.Sleep(100);
+                   UpdateTaskStatus();
+                }
+                else if (addTask == $"{delete} Delete Tasks")
+                {
+                    // Simulate View Tasks action
+
+                    AnsiConsole.Clear();
+                    CRUD.ViewAllTask();
+
+
+                    // Thread.Sleep(100);
+                    DeleteTask();
+                }
+                else if (addTask == $"{close}Exit")
+                {
+
+                    var confirmation = AnsiConsole.Prompt(
+                        new TextPrompt<bool>("Are you sure you want to exit?")
+                            .AddChoice(true)
+                            .AddChoice(false)
+                            .DefaultValue(true)
+                            .WithConverter(choice => choice ? "y" : "n"));
+
+                    // Echo the confirmation back to the terminal
+                    Console.WriteLine(confirmation ? "Confirmed" : "Declined");
+
+                    if (confirmation == true)
+                    {
+
+
+                        AnsiConsole.Progress()
+                             .Start(ctx =>
+                             {
+                                 // Define tasks
+                                 var task1 = ctx.AddTask("[yellow]Closing console app[/]");
+
+                                 while (!ctx.IsFinished)
+                                 {
+                                     task1.Increment(1.5);
+                                     System.Threading.Thread.Sleep(20);
+
+                                 }
+                             });
+                          AnsiConsole.MarkupLine("[bold red]Closing the application...[/]");
+
+                        AnsiConsole.Write(
+                        new FigletText("Thank you for using my Todo App \n \n")
+                            .Centered()
+                            .Color(Color.Yellow));
+
+
+                        Environment.Exit(0);
+
+                    }
+
+                
+                }
+
+
+
+            }
+
+        }
 
         private static void Addtask()
         {
-
+            var curious = Emoji.Known.WhiteQuestionMark.ToString();
             var taskname = AnsiConsole.Prompt(
-                new TextPrompt<string> ("What task you want to accomplised today?")
+                new TextPrompt<string> ($"What task you want to accomplised today {curious}:")
                 );
 
 
-            AnsiConsole.WriteLine(taskname);
+            //AnsiConsole.WriteLine(taskname);
 
-            AnsiConsole.MarkupLine("[bold green]Task added successfully![/]");
+            // tasks.Add(taskname);
+
+            var insert = new CRUD();
+
+            insert.TaskName= taskname;
+
+            insert.Insert();
+
+
+            AnsiConsole.MarkupLine("[bold yellow]Task added successfully![/]");
+            CRUD.ViewAllTask();
 
 
         }
+
+        private static void UpdateTaskStatus()
+        {
+           
+            var updateStatus = AnsiConsole.Prompt(
+            new TextPrompt<string>($"Update status of your task, please enter a valid taskID:")
+            );
+
+
+
+            var obj= new CRUD();
+
+            obj.TaskID = Convert.ToInt32(updateStatus);
+
+            obj.UpdateStatus(obj.TaskID);
+            AnsiConsole.Clear();
+            CRUD.ViewAllTask();
+        }
+        private static void DeleteTask()
+        {
+
+            var delete = AnsiConsole.Prompt(
+            new TextPrompt<string>($"Delete your task, please enter a valid taskID:")
+            );
+
+
+
+            var obj = new CRUD();
+
+            obj.TaskID = Convert.ToInt32(delete);
+
+            obj.DeleteTask(obj.TaskID);
+            AnsiConsole.Clear();
+            CRUD.ViewAllTask();
+        }
+
+
     }
 }
